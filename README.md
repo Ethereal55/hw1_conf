@@ -22,7 +22,8 @@
    ```bash
    pip install tkinter
 ![image](https://github.com/user-attachments/assets/8f5c6b60-59fe-4f06-b4f6-53bc49f37242)
-порядок использования команд:
+
+порядок использования команд на скриншоте:
 1) ls
 2) cd folder
 3) ls
