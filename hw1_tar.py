@@ -1,5 +1,9 @@
 import tkinter as tk
 import tarfile
+from unittest.mock import patch
+import sys
+
+@patch('sys.argv', ['hw1_tar.py', 'END-PC', 'archive.tar', 'setup.sh'])
 
 def emu():
     global path
@@ -10,12 +14,9 @@ def emu():
         # Получаем список всех путей в архиве
         members = mytar.getmembers()
         
-        # Выводим содержимое архива для отладки
-        print("Members in tar:", [member.name for member in members])  # Отладочный вывод
-
         # Обработка команды ls
         if com == "ls":
-            output_area.insert(tk.END, "/".join(path) + ":\n")
+            output_area.insert(tk.END,"C:/Users/" + sys.argv[1] + "/" + sys.argv [2] + "/" + "/".join(path) + ":\n")
             for member in members:
                 dir_structure = member.name.lstrip('/.').split('/')
                 if dir_structure[:-1] == path:
@@ -55,13 +56,8 @@ def emu():
             file_name = com.split(" ")[1].strip()
             full_path = "/".join(path + [file_name])
             
-            # Отладочные выводы
-            print("Current path:", "/".join(path))
-            print("Full path to file:", full_path)
-
             try:
                 member = mytar.getmember(full_path)  # Получаем член архива
-                print("Found member:", member.name)  # Отладочный вывод
                 with mytar.extractfile(member) as file:
                     if file:  # Проверяем, что файл существует
                         output_area.insert(tk.END, file.read().decode('utf-8') + "\n")
@@ -73,13 +69,8 @@ def emu():
             file_name = com.split(" ")[1].strip()
             full_path = "/".join(path + [file_name])
             
-            # Отладочные выводы
-            print("Current path:", "/".join(path))
-            print("Full path to file:", full_path)
-
             try:
                 member = mytar.getmember(full_path)  # Получаем член архива
-                print("Found member:", member.name)  # Отладочный вывод
                 with mytar.extractfile(member) as file:
                     if file:  # Проверяем, что файл существует
                         content = file.read().decode('utf-8')
