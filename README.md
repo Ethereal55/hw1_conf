@@ -21,6 +21,8 @@
 2. Установите необходимые зависимости:
    ```bash
    pip install tkinter
+   python hw1_tar.py
+   
 ![image](https://github.com/user-attachments/assets/8f5c6b60-59fe-4f06-b4f6-53bc49f37242)
 
 порядок использования команд на скриншоте:
